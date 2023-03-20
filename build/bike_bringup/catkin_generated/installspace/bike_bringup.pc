@@ -1,0 +1,8 @@
+prefix=/home/whale/code/ros/bike_control/bike_control/install
+
+Name: bike_bringup
+Description: Description of bike_bringup
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

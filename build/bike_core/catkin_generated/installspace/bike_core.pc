@@ -1,0 +1,8 @@
+prefix=/home/whale/code/ros/bike_control/bike_control/install
+
+Name: bike_core
+Description: Description of bike_core
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs message_runtime

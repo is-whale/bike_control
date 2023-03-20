@@ -1,0 +1,2 @@
+set(bike_core_MESSAGE_FILES "/home/whale/code/ros/bike_control/bike_control/src/bike_core/msg/remote_control_msg.msg;/home/whale/code/ros/bike_control/bike_control/src/bike_core/msg/odrive_can_msg.msg;/home/whale/code/ros/bike_control/bike_control/src/bike_core/msg/odrive_motor_feedback_msg.msg;/home/whale/code/ros/bike_control/bike_control/src/bike_core/msg/pid_params_msg.msg;/home/whale/code/ros/bike_control/bike_control/src/bike_core/msg/sbus_channels_msg.msg")
+set(bike_core_SERVICE_FILES "")

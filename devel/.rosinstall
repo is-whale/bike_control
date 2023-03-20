@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/whale/code/ros/bike_control/bike_control/devel/setup.sh

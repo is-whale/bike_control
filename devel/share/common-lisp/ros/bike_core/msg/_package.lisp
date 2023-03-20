@@ -1,0 +1,15 @@
+(cl:defpackage bike_core-msg
+  (:use )
+  (:export
+   "<ODRIVE_CAN_MSG>"
+   "ODRIVE_CAN_MSG"
+   "<ODRIVE_MOTOR_FEEDBACK_MSG>"
+   "ODRIVE_MOTOR_FEEDBACK_MSG"
+   "<PID_PARAMS_MSG>"
+   "PID_PARAMS_MSG"
+   "<REMOTE_CONTROL_MSG>"
+   "REMOTE_CONTROL_MSG"
+   "<SBUS_CHANNELS_MSG>"
+   "SBUS_CHANNELS_MSG"
+  ))
+

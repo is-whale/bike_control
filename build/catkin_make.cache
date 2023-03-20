@@ -1,0 +1,2 @@
+bike_bringup:bike_core:bike_xuan_vision/bike_vision:imu_ch100/imu_launch:imu_ch100/imu_tool/imu_complementary_filter:imu_ch100/imu_tool/imu_filter_madgwick:imu_ch100/imu_tool/rviz_imu_plugin:imu_ch100/serial_imu:ros_astra_camera
+-DCATKIN_DEVEL_PREFIX=/home/whale/code/ros/bike_control/bike_control/devel -DCMAKE_INSTALL_PREFIX=/home/whale/code/ros/bike_control/bike_control/install -G Unix Makefiles
