@@ -16,6 +16,24 @@ QtCore/qmetatype.h
 
 /home/whale/code/ros/bike_control/bike_control/build/bike_core/sbus_simulate_node_autogen/mocs_compilation.cpp
 
+/home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/sbus_channels_msg.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+
 /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/OdriveMotorConfig.hpp
 glog/logging.h
 -
@@ -268,6 +286,10 @@ boost/make_shared.hpp
 cstddef
 -
 memory
+-
+
+/opt/ros/noetic/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/noetic/include/ros/message_traits.h
@@ -703,6 +725,22 @@ ros/forwards.h
 /opt/ros/noetic/include/ros/ros/forwards.h
 
 /opt/ros/noetic/include/rosconsole/macros_generated.h
+
+/opt/ros/noetic/include/std_msgs/Header.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 
 /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 ros/macros.h

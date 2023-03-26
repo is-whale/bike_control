@@ -4,6 +4,7 @@
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/bike_xuan_core_control_node_autogen/mocs_compilation.cpp.o: bike_core/bike_xuan_core_control_node_autogen/mocs_compilation.cpp
 
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o: bike_core/include/bike_core/moc_RemoteControlParser.cpp
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/remote_control_msg.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/OdriveMotorConfig.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/RemoteControlParser.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o: /opt/ros/noetic/include/ros/advertise_options.h
@@ -309,6 +310,11 @@ bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_Remot
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h
 
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/odrive_can_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/odrive_motor_feedback_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/pid_params_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/remote_control_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/sbus_channels_msg.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_vision/road_obstacle_msg.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/BikePid.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/node/BikeXuanCoreControlNode.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/BikeXuanControl.hpp
@@ -722,6 +728,11 @@ bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.o: /usr/inc
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.o: /usr/include/opencv4/opencv2/viz/vizcore.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.o: /usr/include/opencv4/opencv2/viz/widgets.hpp
 
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/odrive_can_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/odrive_motor_feedback_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/pid_params_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/remote_control_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/sbus_channels_msg.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_vision/road_obstacle_msg.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/BikePid.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/BikeXuanControl.hpp
@@ -945,6 +956,8 @@ bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: 
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /usr/include/opencv4/opencv2/viz/vizcore.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikeXuanControl.cpp.o: /usr/include/opencv4/opencv2/viz/widgets.hpp
 
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/odrive_can_msg.h
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/odrive_motor_feedback_msg.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/CanReceiveSend.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/OdriveMotorConfig.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/src/CanReceiveSend.cpp
@@ -1167,6 +1180,7 @@ bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o: /
 
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/OdriveMotorConfig.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/src/OdriveMotorConfig.cpp
 
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.o: /home/whale/code/ros/bike_control/bike_control/devel/include/bike_core/remote_control_msg.h
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/OdriveMotorConfig.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/include/bike_core/RemoteControlParser.hpp
 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.o: /home/whale/code/ros/bike_control/bike_control/src/bike_core/src/RemoteControlParser.cpp

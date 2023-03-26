@@ -9,6 +9,8 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/whale/code/ros/bike_control/bike_control/devel:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/whale/code/ros/bike_control/bike_control/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/whale/code/ros/bike_control/bike_control/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/whale/code/ros/bike_control/bike_control/build'
+export PYTHONPATH="/home/whale/code/ros/bike_control/bike_control/devel/lib/python3/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES='/home/whale/code/ros/bike_control/bike_control/devel/share/common-lisp'
 export ROS_PACKAGE_PATH="/home/whale/code/ros/bike_control/bike_control/src:$ROS_PACKAGE_PATH"

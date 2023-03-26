@@ -101,9 +101,9 @@ ros_astra_camera/CMakeFiles/astra_camera_generate_messages_nodejs: /home/whale/c
 
 /home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv/GetCameraInfo.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv/GetCameraInfo.js: /home/whale/code/ros/bike_control/bike_control/src/ros_astra_camera/srv/GetCameraInfo.srv
-/home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
 /home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/sensor_msgs/msg/RegionOfInterest.msg
+/home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
+/home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/whale/code/ros/bike_control/bike_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from astra_camera/GetCameraInfo.srv"
 	cd /home/whale/code/ros/bike_control/bike_control/build/ros_astra_camera && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/whale/code/ros/bike_control/bike_control/src/ros_astra_camera/srv/GetCameraInfo.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p astra_camera -o /home/whale/code/ros/bike_control/bike_control/devel/share/gennodejs/ros/astra_camera/srv
 

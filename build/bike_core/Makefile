@@ -68,17 +68,16 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -102,17 +101,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -134,6 +122,18 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,379 +168,79 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule
+bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-bike_xuan_core_control_node: bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule
+actionlib_generate_messages_nodejs: bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
 
-.PHONY : bike_xuan_core_control_node
+.PHONY : actionlib_generate_messages_nodejs
 
 # fast build rule for target.
-bike_xuan_core_control_node/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build
-.PHONY : bike_xuan_core_control_node/fast
+actionlib_generate_messages_nodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
+.PHONY : actionlib_generate_messages_nodejs/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/odrv0_config_test_node.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/odrv0_config_test_node.dir/rule
-.PHONY : bike_core/CMakeFiles/odrv0_config_test_node.dir/rule
+bike_core/CMakeFiles/can_send_receive_node.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/can_send_receive_node.dir/rule
+.PHONY : bike_core/CMakeFiles/can_send_receive_node.dir/rule
 
 # Convenience name for target.
-odrv0_config_test_node: bike_core/CMakeFiles/odrv0_config_test_node.dir/rule
+can_send_receive_node: bike_core/CMakeFiles/can_send_receive_node.dir/rule
 
-.PHONY : odrv0_config_test_node
+.PHONY : can_send_receive_node
 
 # fast build rule for target.
-odrv0_config_test_node/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/odrv0_config_test_node.dir/build.make bike_core/CMakeFiles/odrv0_config_test_node.dir/build
-.PHONY : odrv0_config_test_node/fast
+can_send_receive_node/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/can_send_receive_node.dir/build.make bike_core/CMakeFiles/can_send_receive_node.dir/build
+.PHONY : can_send_receive_node/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/sbus_simulate_node.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sbus_simulate_node.dir/rule
-.PHONY : bike_core/CMakeFiles/sbus_simulate_node.dir/rule
+bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-sbus_simulate_node: bike_core/CMakeFiles/sbus_simulate_node.dir/rule
+actionlib_generate_messages_eus: bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule
 
-.PHONY : sbus_simulate_node
+.PHONY : actionlib_generate_messages_eus
 
 # fast build rule for target.
-sbus_simulate_node/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sbus_simulate_node.dir/build.make bike_core/CMakeFiles/sbus_simulate_node.dir/build
-.PHONY : sbus_simulate_node/fast
+actionlib_generate_messages_eus/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/build
+.PHONY : actionlib_generate_messages_eus/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/bike_pid_test_node.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_pid_test_node.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_pid_test_node.dir/rule
+bike_core/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : bike_core/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-bike_pid_test_node: bike_core/CMakeFiles/bike_pid_test_node.dir/rule
+sensor_msgs_generate_messages_cpp: bike_core/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : bike_pid_test_node
+.PHONY : sensor_msgs_generate_messages_cpp
 
 # fast build rule for target.
-bike_pid_test_node/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_pid_test_node.dir/build.make bike_core/CMakeFiles/bike_pid_test_node.dir/build
-.PHONY : bike_pid_test_node/fast
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/bike_core_genpy.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_genpy.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_genpy.dir/rule
+bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-bike_core_genpy: bike_core/CMakeFiles/bike_core_genpy.dir/rule
+tf_generate_messages_nodejs: bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule
 
-.PHONY : bike_core_genpy
+.PHONY : tf_generate_messages_nodejs
 
 # fast build rule for target.
-bike_core_genpy/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_genpy.dir/build.make bike_core/CMakeFiles/bike_core_genpy.dir/build
-.PHONY : bike_core_genpy/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_gennodejs.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_gennodejs.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_gennodejs.dir/rule
-
-# Convenience name for target.
-bike_core_gennodejs: bike_core/CMakeFiles/bike_core_gennodejs.dir/rule
-
-.PHONY : bike_core_gennodejs
-
-# fast build rule for target.
-bike_core_gennodejs/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_gennodejs.dir/build.make bike_core/CMakeFiles/bike_core_gennodejs.dir/build
-.PHONY : bike_core_gennodejs/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-bike_core_generate_messages_nodejs: bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule
-
-.PHONY : bike_core_generate_messages_nodejs
-
-# fast build rule for target.
-bike_core_generate_messages_nodejs/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/build
-.PHONY : bike_core_generate_messages_nodejs/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_genlisp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_genlisp.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_genlisp.dir/rule
-
-# Convenience name for target.
-bike_core_genlisp: bike_core/CMakeFiles/bike_core_genlisp.dir/rule
-
-.PHONY : bike_core_genlisp
-
-# fast build rule for target.
-bike_core_genlisp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_genlisp.dir/build.make bike_core/CMakeFiles/bike_core_genlisp.dir/build
-.PHONY : bike_core_genlisp/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-bike_core_generate_messages_lisp: bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule
-
-.PHONY : bike_core_generate_messages_lisp
-
-# fast build rule for target.
-bike_core_generate_messages_lisp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/build
-.PHONY : bike_core_generate_messages_lisp/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule
-.PHONY : bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_lisp: bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule
-
-.PHONY : tf_generate_messages_lisp
-
-# fast build rule for target.
-tf_generate_messages_lisp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/tf_generate_messages_lisp.dir/build
-.PHONY : tf_generate_messages_lisp/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-.PHONY : bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_lisp: bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_lisp
-
-# fast build rule for target.
-tf2_msgs_generate_messages_lisp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
-.PHONY : tf2_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_eus: bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_eus
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_eus/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
-.PHONY : actionlib_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/tf_generate_messages_py.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_py.dir/rule
-.PHONY : bike_core/CMakeFiles/tf_generate_messages_py.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_py: bike_core/CMakeFiles/tf_generate_messages_py.dir/rule
-
-.PHONY : tf_generate_messages_py
-
-# fast build rule for target.
-tf_generate_messages_py/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_py.dir/build.make bike_core/CMakeFiles/tf_generate_messages_py.dir/build
-.PHONY : tf_generate_messages_py/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule
-.PHONY : bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_cpp: bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-.PHONY : tf_generate_messages_cpp
-
-# fast build rule for target.
-tf_generate_messages_cpp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/tf_generate_messages_cpp.dir/build
-.PHONY : tf_generate_messages_cpp/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_geneus.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_geneus.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_geneus.dir/rule
-
-# Convenience name for target.
-bike_core_geneus: bike_core/CMakeFiles/bike_core_geneus.dir/rule
-
-.PHONY : bike_core_geneus
-
-# fast build rule for target.
-bike_core_geneus/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_geneus.dir/build.make bike_core/CMakeFiles/bike_core_geneus.dir/build
-.PHONY : bike_core_geneus/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_py.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_nodejs: bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_nodejs/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
-.PHONY : actionlib_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule
-
-# Convenience name for target.
-bike_core_generate_messages_py: bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule
-
-.PHONY : bike_core_generate_messages_py
-
-# fast build rule for target.
-bike_core_generate_messages_py/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_py.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_py.dir/build
-.PHONY : bike_core_generate_messages_py/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_lisp: bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_lisp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
-.PHONY : actionlib_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_generate_messages.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_generate_messages.dir/rule
-
-# Convenience name for target.
-bike_core_generate_messages: bike_core/CMakeFiles/bike_core_generate_messages.dir/rule
-
-.PHONY : bike_core_generate_messages
-
-# fast build rule for target.
-bike_core_generate_messages/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages.dir/build
-.PHONY : bike_core_generate_messages/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
-.PHONY : bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_nodejs: bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-tf2_msgs_generate_messages_nodejs/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
-.PHONY : tf2_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_py: bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_py
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_py/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
-.PHONY : actionlib_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_cpp: bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-.PHONY : actionlib_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_generate_messages_cpp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-.PHONY : actionlib_generate_messages_cpp/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-bike_core_generate_messages_eus: bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule
-
-.PHONY : bike_core_generate_messages_eus
-
-# fast build rule for target.
-bike_core_generate_messages_eus/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/build
-.PHONY : bike_core_generate_messages_eus/fast
-
-# Convenience name for target.
-bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-.PHONY : bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_py: bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_py
-
-# fast build rule for target.
-tf2_msgs_generate_messages_py/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
-.PHONY : tf2_msgs_generate_messages_py/fast
+tf_generate_messages_nodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
 
 # Convenience name for target.
 bike_core/CMakeFiles/tf_generate_messages_eus.dir/rule:
@@ -573,64 +273,94 @@ tf2_msgs_generate_messages_cpp/fast:
 .PHONY : tf2_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-.PHONY : bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-tf_generate_messages_nodejs: bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+actionlib_msgs_generate_messages_py: bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
 
-.PHONY : tf_generate_messages_nodejs
+.PHONY : actionlib_msgs_generate_messages_py
 
 # fast build rule for target.
-tf_generate_messages_nodejs/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/tf_generate_messages_nodejs.dir/build
-.PHONY : tf_generate_messages_nodejs/fast
+actionlib_msgs_generate_messages_py/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+.PHONY : actionlib_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule
-.PHONY : bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule
+bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-_bike_core_generate_messages_check_deps_remote_control_msg: bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule
+actionlib_generate_messages_cpp: bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
 
-.PHONY : _bike_core_generate_messages_check_deps_remote_control_msg
+.PHONY : actionlib_generate_messages_cpp
 
 # fast build rule for target.
-_bike_core_generate_messages_check_deps_remote_control_msg/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/build.make bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/build
-.PHONY : _bike_core_generate_messages_check_deps_remote_control_msg/fast
+actionlib_generate_messages_cpp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_cpp.dir/build
+.PHONY : actionlib_generate_messages_cpp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule
+.PHONY : bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_cpp: bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+tf_generate_messages_cpp: bike_core/CMakeFiles/tf_generate_messages_cpp.dir/rule
 
-.PHONY : actionlib_msgs_generate_messages_cpp
+.PHONY : tf_generate_messages_cpp
 
 # fast build rule for target.
-actionlib_msgs_generate_messages_cpp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
-.PHONY : actionlib_msgs_generate_messages_cpp/fast
+tf_generate_messages_cpp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+bike_core/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : bike_core/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-actionlib_generate_messages_eus: bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+geometry_msgs_generate_messages_lisp: bike_core/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : actionlib_generate_messages_eus
+.PHONY : geometry_msgs_generate_messages_lisp
 
 # fast build rule for target.
-actionlib_generate_messages_eus/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_eus.dir/build
-.PHONY : actionlib_generate_messages_eus/fast
+geometry_msgs_generate_messages_lisp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_py: bike_core/CMakeFiles/actionlib_generate_messages_py.dir/rule
+
+.PHONY : actionlib_generate_messages_py
+
+# fast build rule for target.
+actionlib_generate_messages_py/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_py.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_py.dir/build
+.PHONY : actionlib_generate_messages_py/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_core_geneus.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_geneus.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_geneus.dir/rule
+
+# Convenience name for target.
+bike_core_geneus: bike_core/CMakeFiles/bike_core_geneus.dir/rule
+
+.PHONY : bike_core_geneus
+
+# fast build rule for target.
+bike_core_geneus/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_geneus.dir/build.make bike_core/CMakeFiles/bike_core_geneus.dir/build
+.PHONY : bike_core_geneus/fast
 
 # Convenience name for target.
 bike_core/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
@@ -648,49 +378,79 @@ actionlib_generate_messages_lisp/fast:
 .PHONY : actionlib_generate_messages_lisp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/can_send_receive_node.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/can_send_receive_node.dir/rule
-.PHONY : bike_core/CMakeFiles/can_send_receive_node.dir/rule
+bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule
+.PHONY : bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule
 
 # Convenience name for target.
-can_send_receive_node: bike_core/CMakeFiles/can_send_receive_node.dir/rule
+_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg: bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule
 
-.PHONY : can_send_receive_node
+.PHONY : _bike_core_generate_messages_check_deps_odrive_motor_feedback_msg
 
 # fast build rule for target.
-can_send_receive_node/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/can_send_receive_node.dir/build.make bike_core/CMakeFiles/can_send_receive_node.dir/build
-.PHONY : can_send_receive_node/fast
+_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/build.make bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/build
+.PHONY : _bike_core_generate_messages_check_deps_odrive_motor_feedback_msg/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-.PHONY : bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+bike_core/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : bike_core/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-actionlib_generate_messages_nodejs: bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+geometry_msgs_generate_messages_eus: bike_core/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
-.PHONY : actionlib_generate_messages_nodejs
+.PHONY : geometry_msgs_generate_messages_eus
 
 # fast build rule for target.
-actionlib_generate_messages_nodejs/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
-.PHONY : actionlib_generate_messages_nodejs/fast
+geometry_msgs_generate_messages_eus/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make bike_core/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule
+bike_core/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : bike_core/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-bike_core_generate_messages_cpp: bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule
+sensor_msgs_generate_messages_eus: bike_core/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
-.PHONY : bike_core_generate_messages_cpp
+.PHONY : sensor_msgs_generate_messages_eus
 
 # fast build rule for target.
-bike_core_generate_messages_cpp/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/build
-.PHONY : bike_core_generate_messages_cpp/fast
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make bike_core/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : bike_core/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: bike_core/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : bike_core/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_py: bike_core/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_py
+
+# fast build rule for target.
+geometry_msgs_generate_messages_py/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make bike_core/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 bike_core/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule:
@@ -708,49 +468,274 @@ tf2_msgs_generate_messages_eus/fast:
 .PHONY : tf2_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule
-.PHONY : bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule
+bike_core/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : bike_core/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-_bike_core_generate_messages_check_deps_odrive_can_msg: bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule
+sensor_msgs_generate_messages_py: bike_core/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
-.PHONY : _bike_core_generate_messages_check_deps_odrive_can_msg
+.PHONY : sensor_msgs_generate_messages_py
 
 # fast build rule for target.
-_bike_core_generate_messages_check_deps_odrive_can_msg/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/build.make bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/build
-.PHONY : _bike_core_generate_messages_check_deps_odrive_can_msg/fast
+sensor_msgs_generate_messages_py/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make bike_core/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule
-.PHONY : bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule
+bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg: bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/rule
+bike_core_generate_messages_eus: bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/rule
 
-.PHONY : _bike_core_generate_messages_check_deps_odrive_motor_feedback_msg
+.PHONY : bike_core_generate_messages_eus
 
 # fast build rule for target.
-_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/build.make bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_motor_feedback_msg.dir/build
-.PHONY : _bike_core_generate_messages_check_deps_odrive_motor_feedback_msg/fast
+bike_core_generate_messages_eus/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_eus.dir/build
+.PHONY : bike_core_generate_messages_eus/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/test_can_send_receive_node.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/test_can_send_receive_node.dir/rule
-.PHONY : bike_core/CMakeFiles/test_can_send_receive_node.dir/rule
+bike_core/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : bike_core/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-test_can_send_receive_node: bike_core/CMakeFiles/test_can_send_receive_node.dir/rule
+geometry_msgs_generate_messages_cpp: bike_core/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : test_can_send_receive_node
+.PHONY : geometry_msgs_generate_messages_cpp
 
 # fast build rule for target.
-test_can_send_receive_node/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/test_can_send_receive_node.dir/build.make bike_core/CMakeFiles/test_can_send_receive_node.dir/build
-.PHONY : test_can_send_receive_node/fast
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule
+.PHONY : bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_lisp: bike_core/CMakeFiles/tf_generate_messages_lisp.dir/rule
+
+.PHONY : tf_generate_messages_lisp
+
+# fast build rule for target.
+tf_generate_messages_lisp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/tf_generate_messages_lisp.dir/build
+.PHONY : tf_generate_messages_lisp/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: bike_core/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_eus: bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_eus
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_eus/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+.PHONY : actionlib_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_nodejs: bike_core/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+geometry_msgs_generate_messages_nodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
+.PHONY : bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_lisp: bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_lisp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_lisp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
+.PHONY : tf2_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+bike_core_generate_messages_nodejs: bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/rule
+
+.PHONY : bike_core_generate_messages_nodejs
+
+# fast build rule for target.
+bike_core_generate_messages_nodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_nodejs.dir/build
+.PHONY : bike_core_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_nodejs: bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+tf2_msgs_generate_messages_nodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
+.PHONY : tf2_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/tf_generate_messages_py.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf_generate_messages_py.dir/rule
+.PHONY : bike_core/CMakeFiles/tf_generate_messages_py.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_py: bike_core/CMakeFiles/tf_generate_messages_py.dir/rule
+
+.PHONY : tf_generate_messages_py
+
+# fast build rule for target.
+tf_generate_messages_py/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf_generate_messages_py.dir/build.make bike_core/CMakeFiles/tf_generate_messages_py.dir/build
+.PHONY : tf_generate_messages_py/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_nodejs: bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_nodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+.PHONY : actionlib_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_lisp: bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_lisp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule
+
+# Convenience name for target.
+bike_core_generate_messages_py: bike_core/CMakeFiles/bike_core_generate_messages_py.dir/rule
+
+.PHONY : bike_core_generate_messages_py
+
+# fast build rule for target.
+bike_core_generate_messages_py/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_py.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_py.dir/build
+.PHONY : bike_core_generate_messages_py/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_core_generate_messages.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_generate_messages.dir/rule
+
+# Convenience name for target.
+bike_core_generate_messages: bike_core/CMakeFiles/bike_core_generate_messages.dir/rule
+
+.PHONY : bike_core_generate_messages
+
+# fast build rule for target.
+bike_core_generate_messages/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages.dir/build
+.PHONY : bike_core_generate_messages/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule
+.PHONY : bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule
+
+# Convenience name for target.
+_bike_core_generate_messages_check_deps_remote_control_msg: bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/rule
+
+.PHONY : _bike_core_generate_messages_check_deps_remote_control_msg
+
+# fast build rule for target.
+_bike_core_generate_messages_check_deps_remote_control_msg/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/build.make bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_remote_control_msg.dir/build
+.PHONY : _bike_core_generate_messages_check_deps_remote_control_msg/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/odrv0_config_test_node.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/odrv0_config_test_node.dir/rule
+.PHONY : bike_core/CMakeFiles/odrv0_config_test_node.dir/rule
+
+# Convenience name for target.
+odrv0_config_test_node: bike_core/CMakeFiles/odrv0_config_test_node.dir/rule
+
+.PHONY : odrv0_config_test_node
+
+# fast build rule for target.
+odrv0_config_test_node/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/odrv0_config_test_node.dir/build.make bike_core/CMakeFiles/odrv0_config_test_node.dir/build
+.PHONY : odrv0_config_test_node/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+.PHONY : bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_cpp: bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_cpp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+.PHONY : actionlib_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_pid_params_msg.dir/rule:
@@ -768,19 +753,19 @@ _bike_core_generate_messages_check_deps_pid_params_msg/fast:
 .PHONY : _bike_core_generate_messages_check_deps_pid_params_msg/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/parser_remote_data_node.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/parser_remote_data_node.dir/rule
-.PHONY : bike_core/CMakeFiles/parser_remote_data_node.dir/rule
+bike_core/CMakeFiles/test_can_send_receive_node.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/test_can_send_receive_node.dir/rule
+.PHONY : bike_core/CMakeFiles/test_can_send_receive_node.dir/rule
 
 # Convenience name for target.
-parser_remote_data_node: bike_core/CMakeFiles/parser_remote_data_node.dir/rule
+test_can_send_receive_node: bike_core/CMakeFiles/test_can_send_receive_node.dir/rule
 
-.PHONY : parser_remote_data_node
+.PHONY : test_can_send_receive_node
 
 # fast build rule for target.
-parser_remote_data_node/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/build
-.PHONY : parser_remote_data_node/fast
+test_can_send_receive_node/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/test_can_send_receive_node.dir/build.make bike_core/CMakeFiles/test_can_send_receive_node.dir/build
+.PHONY : test_can_send_receive_node/fast
 
 # Convenience name for target.
 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_sbus_channels_msg.dir/rule:
@@ -798,6 +783,36 @@ _bike_core_generate_messages_check_deps_sbus_channels_msg/fast:
 .PHONY : _bike_core_generate_messages_check_deps_sbus_channels_msg/fast
 
 # Convenience name for target.
+bike_core/CMakeFiles/parser_remote_data_node.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/parser_remote_data_node.dir/rule
+.PHONY : bike_core/CMakeFiles/parser_remote_data_node.dir/rule
+
+# Convenience name for target.
+parser_remote_data_node: bike_core/CMakeFiles/parser_remote_data_node.dir/rule
+
+.PHONY : parser_remote_data_node
+
+# fast build rule for target.
+parser_remote_data_node/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/build
+.PHONY : parser_remote_data_node/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+bike_core_generate_messages_cpp: bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/rule
+
+.PHONY : bike_core_generate_messages_cpp
+
+# fast build rule for target.
+bike_core_generate_messages_cpp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_cpp.dir/build
+.PHONY : bike_core_generate_messages_cpp/fast
+
+# Convenience name for target.
 bike_core/CMakeFiles/bike_core_gencpp.dir/rule:
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_gencpp.dir/rule
 .PHONY : bike_core/CMakeFiles/bike_core_gencpp.dir/rule
@@ -813,64 +828,139 @@ bike_core_gencpp/fast:
 .PHONY : bike_core_gencpp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule
+bike_core/CMakeFiles/bike_core_genlisp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_genlisp.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_genlisp.dir/rule
 
 # Convenience name for target.
-bike_xuan_core_control_node_autogen: bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule
+bike_core_genlisp: bike_core/CMakeFiles/bike_core_genlisp.dir/rule
 
-.PHONY : bike_xuan_core_control_node_autogen
+.PHONY : bike_core_genlisp
 
 # fast build rule for target.
-bike_xuan_core_control_node_autogen/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/build
-.PHONY : bike_xuan_core_control_node_autogen/fast
+bike_core_genlisp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_genlisp.dir/build.make bike_core/CMakeFiles/bike_core_genlisp.dir/build
+.PHONY : bike_core_genlisp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule
-.PHONY : bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule
+bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule
+.PHONY : bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule
 
 # Convenience name for target.
-odrv0_config_test_node_autogen: bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule
+_bike_core_generate_messages_check_deps_odrive_can_msg: bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/rule
 
-.PHONY : odrv0_config_test_node_autogen
+.PHONY : _bike_core_generate_messages_check_deps_odrive_can_msg
 
 # fast build rule for target.
-odrv0_config_test_node_autogen/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/build.make bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/build
-.PHONY : odrv0_config_test_node_autogen/fast
+_bike_core_generate_messages_check_deps_odrive_can_msg/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/build.make bike_core/CMakeFiles/_bike_core_generate_messages_check_deps_odrive_can_msg.dir/build
+.PHONY : _bike_core_generate_messages_check_deps_odrive_can_msg/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule
-.PHONY : bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule
+bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-sbus_simulate_node_autogen: bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule
+bike_core_generate_messages_lisp: bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/rule
 
-.PHONY : sbus_simulate_node_autogen
+.PHONY : bike_core_generate_messages_lisp
 
 # fast build rule for target.
-sbus_simulate_node_autogen/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/build.make bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/build
-.PHONY : sbus_simulate_node_autogen/fast
+bike_core_generate_messages_lisp/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/build.make bike_core/CMakeFiles/bike_core_generate_messages_lisp.dir/build
+.PHONY : bike_core_generate_messages_lisp/fast
 
 # Convenience name for target.
-bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule
-.PHONY : bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule
+bike_core/CMakeFiles/bike_core_gennodejs.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_gennodejs.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_gennodejs.dir/rule
 
 # Convenience name for target.
-bike_pid_test_node_autogen: bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule
+bike_core_gennodejs: bike_core/CMakeFiles/bike_core_gennodejs.dir/rule
 
-.PHONY : bike_pid_test_node_autogen
+.PHONY : bike_core_gennodejs
 
 # fast build rule for target.
-bike_pid_test_node_autogen/fast:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/build.make bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/build
-.PHONY : bike_pid_test_node_autogen/fast
+bike_core_gennodejs/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_gennodejs.dir/build.make bike_core/CMakeFiles/bike_core_gennodejs.dir/build
+.PHONY : bike_core_gennodejs/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_core_genpy.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_core_genpy.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_core_genpy.dir/rule
+
+# Convenience name for target.
+bike_core_genpy: bike_core/CMakeFiles/bike_core_genpy.dir/rule
+
+.PHONY : bike_core_genpy
+
+# fast build rule for target.
+bike_core_genpy/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_core_genpy.dir/build.make bike_core/CMakeFiles/bike_core_genpy.dir/build
+.PHONY : bike_core_genpy/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+.PHONY : bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_py: bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_py
+
+# fast build rule for target.
+tf2_msgs_generate_messages_py/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make bike_core/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
+.PHONY : tf2_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_pid_test_node.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_pid_test_node.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_pid_test_node.dir/rule
+
+# Convenience name for target.
+bike_pid_test_node: bike_core/CMakeFiles/bike_pid_test_node.dir/rule
+
+.PHONY : bike_pid_test_node
+
+# fast build rule for target.
+bike_pid_test_node/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_pid_test_node.dir/build.make bike_core/CMakeFiles/bike_pid_test_node.dir/build
+.PHONY : bike_pid_test_node/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/sbus_simulate_node.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sbus_simulate_node.dir/rule
+.PHONY : bike_core/CMakeFiles/sbus_simulate_node.dir/rule
+
+# Convenience name for target.
+sbus_simulate_node: bike_core/CMakeFiles/sbus_simulate_node.dir/rule
+
+.PHONY : sbus_simulate_node
+
+# fast build rule for target.
+sbus_simulate_node/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sbus_simulate_node.dir/build.make bike_core/CMakeFiles/sbus_simulate_node.dir/build
+.PHONY : sbus_simulate_node/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule
+
+# Convenience name for target.
+bike_xuan_core_control_node: bike_core/CMakeFiles/bike_xuan_core_control_node.dir/rule
+
+.PHONY : bike_xuan_core_control_node
+
+# fast build rule for target.
+bike_xuan_core_control_node/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build
+.PHONY : bike_xuan_core_control_node/fast
 
 # Convenience name for target.
 bike_core/CMakeFiles/can_send_receive_node_autogen.dir/rule:
@@ -886,6 +976,21 @@ can_send_receive_node_autogen: bike_core/CMakeFiles/can_send_receive_node_autoge
 can_send_receive_node_autogen/fast:
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/can_send_receive_node_autogen.dir/build.make bike_core/CMakeFiles/can_send_receive_node_autogen.dir/build
 .PHONY : can_send_receive_node_autogen/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule
+.PHONY : bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule
+
+# Convenience name for target.
+odrv0_config_test_node_autogen: bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/rule
+
+.PHONY : odrv0_config_test_node_autogen
+
+# fast build rule for target.
+odrv0_config_test_node_autogen/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/build.make bike_core/CMakeFiles/odrv0_config_test_node_autogen.dir/build
+.PHONY : odrv0_config_test_node_autogen/fast
 
 # Convenience name for target.
 bike_core/CMakeFiles/test_can_send_receive_node_autogen.dir/rule:
@@ -916,6 +1021,51 @@ parser_remote_data_node_autogen: bike_core/CMakeFiles/parser_remote_data_node_au
 parser_remote_data_node_autogen/fast:
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node_autogen.dir/build.make bike_core/CMakeFiles/parser_remote_data_node_autogen.dir/build
 .PHONY : parser_remote_data_node_autogen/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule
+
+# Convenience name for target.
+bike_pid_test_node_autogen: bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/rule
+
+.PHONY : bike_pid_test_node_autogen
+
+# fast build rule for target.
+bike_pid_test_node_autogen/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/build.make bike_core/CMakeFiles/bike_pid_test_node_autogen.dir/build
+.PHONY : bike_pid_test_node_autogen/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule
+.PHONY : bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule
+
+# Convenience name for target.
+sbus_simulate_node_autogen: bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/rule
+
+.PHONY : sbus_simulate_node_autogen
+
+# fast build rule for target.
+sbus_simulate_node_autogen/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/build.make bike_core/CMakeFiles/sbus_simulate_node_autogen.dir/build
+.PHONY : sbus_simulate_node_autogen/fast
+
+# Convenience name for target.
+bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f CMakeFiles/Makefile2 bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule
+.PHONY : bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule
+
+# Convenience name for target.
+bike_xuan_core_control_node_autogen: bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/rule
+
+.PHONY : bike_xuan_core_control_node_autogen
+
+# fast build rule for target.
+bike_xuan_core_control_node_autogen/fast:
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node_autogen.dir/build
+.PHONY : bike_xuan_core_control_node_autogen/fast
 
 bike_pid_test_node_autogen/mocs_compilation.o: bike_pid_test_node_autogen/mocs_compilation.cpp.o
 
@@ -1004,8 +1154,8 @@ include/bike_core/moc_RemoteControlParser.o: include/bike_core/moc_RemoteControl
 
 # target to build an object file
 include/bike_core/moc_RemoteControlParser.cpp.o:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.o
 .PHONY : include/bike_core/moc_RemoteControlParser.cpp.o
 
 include/bike_core/moc_RemoteControlParser.i: include/bike_core/moc_RemoteControlParser.cpp.i
@@ -1014,8 +1164,8 @@ include/bike_core/moc_RemoteControlParser.i: include/bike_core/moc_RemoteControl
 
 # target to preprocess a source file
 include/bike_core/moc_RemoteControlParser.cpp.i:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.i
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/include/bike_core/moc_RemoteControlParser.cpp.i
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.i
 .PHONY : include/bike_core/moc_RemoteControlParser.cpp.i
 
 include/bike_core/moc_RemoteControlParser.s: include/bike_core/moc_RemoteControlParser.cpp.s
@@ -1024,8 +1174,8 @@ include/bike_core/moc_RemoteControlParser.s: include/bike_core/moc_RemoteControl
 
 # target to generate assembly for a file
 include/bike_core/moc_RemoteControlParser.cpp.s:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.s
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/include/bike_core/moc_RemoteControlParser.cpp.s
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/include/bike_core/moc_RemoteControlParser.cpp.s
 .PHONY : include/bike_core/moc_RemoteControlParser.cpp.s
 
 include/bike_core/moc_SbusSimulate.o: include/bike_core/moc_SbusSimulate.cpp.o
@@ -1250,8 +1400,8 @@ src/BikePid.o: src/BikePid.cpp.o
 
 # target to build an object file
 src/BikePid.cpp.o:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.o
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_pid_test_node.dir/build.make bike_core/CMakeFiles/bike_pid_test_node.dir/src/BikePid.cpp.o
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.o
 .PHONY : src/BikePid.cpp.o
 
 src/BikePid.i: src/BikePid.cpp.i
@@ -1260,8 +1410,8 @@ src/BikePid.i: src/BikePid.cpp.i
 
 # target to preprocess a source file
 src/BikePid.cpp.i:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.i
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_pid_test_node.dir/build.make bike_core/CMakeFiles/bike_pid_test_node.dir/src/BikePid.cpp.i
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.i
 .PHONY : src/BikePid.cpp.i
 
 src/BikePid.s: src/BikePid.cpp.s
@@ -1270,8 +1420,8 @@ src/BikePid.s: src/BikePid.cpp.s
 
 # target to generate assembly for a file
 src/BikePid.cpp.s:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.s
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_pid_test_node.dir/build.make bike_core/CMakeFiles/bike_pid_test_node.dir/src/BikePid.cpp.s
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/BikePid.cpp.s
 .PHONY : src/BikePid.cpp.s
 
 src/BikeXuanControl.o: src/BikeXuanControl.cpp.o
@@ -1307,9 +1457,9 @@ src/CanReceiveSend.o: src/CanReceiveSend.cpp.o
 
 # target to build an object file
 src/CanReceiveSend.cpp.o:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/can_send_receive_node.dir/build.make bike_core/CMakeFiles/can_send_receive_node.dir/src/CanReceiveSend.cpp.o
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/test_can_send_receive_node.dir/build.make bike_core/CMakeFiles/test_can_send_receive_node.dir/src/CanReceiveSend.cpp.o
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.o
 .PHONY : src/CanReceiveSend.cpp.o
 
 src/CanReceiveSend.i: src/CanReceiveSend.cpp.i
@@ -1318,9 +1468,9 @@ src/CanReceiveSend.i: src/CanReceiveSend.cpp.i
 
 # target to preprocess a source file
 src/CanReceiveSend.cpp.i:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.i
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/can_send_receive_node.dir/build.make bike_core/CMakeFiles/can_send_receive_node.dir/src/CanReceiveSend.cpp.i
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/test_can_send_receive_node.dir/build.make bike_core/CMakeFiles/test_can_send_receive_node.dir/src/CanReceiveSend.cpp.i
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.i
 .PHONY : src/CanReceiveSend.cpp.i
 
 src/CanReceiveSend.s: src/CanReceiveSend.cpp.s
@@ -1329,9 +1479,9 @@ src/CanReceiveSend.s: src/CanReceiveSend.cpp.s
 
 # target to generate assembly for a file
 src/CanReceiveSend.cpp.s:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.s
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/can_send_receive_node.dir/build.make bike_core/CMakeFiles/can_send_receive_node.dir/src/CanReceiveSend.cpp.s
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/test_can_send_receive_node.dir/build.make bike_core/CMakeFiles/test_can_send_receive_node.dir/src/CanReceiveSend.cpp.s
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/CanReceiveSend.cpp.s
 .PHONY : src/CanReceiveSend.cpp.s
 
 src/OdriveMotorConfig.o: src/OdriveMotorConfig.cpp.o
@@ -1340,8 +1490,8 @@ src/OdriveMotorConfig.o: src/OdriveMotorConfig.cpp.o
 
 # target to build an object file
 src/OdriveMotorConfig.cpp.o:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/OdriveMotorConfig.cpp.o
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/odrv0_config_test_node.dir/build.make bike_core/CMakeFiles/odrv0_config_test_node.dir/src/OdriveMotorConfig.cpp.o
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/OdriveMotorConfig.cpp.o
 .PHONY : src/OdriveMotorConfig.cpp.o
 
 src/OdriveMotorConfig.i: src/OdriveMotorConfig.cpp.i
@@ -1350,8 +1500,8 @@ src/OdriveMotorConfig.i: src/OdriveMotorConfig.cpp.i
 
 # target to preprocess a source file
 src/OdriveMotorConfig.cpp.i:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/OdriveMotorConfig.cpp.i
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/odrv0_config_test_node.dir/build.make bike_core/CMakeFiles/odrv0_config_test_node.dir/src/OdriveMotorConfig.cpp.i
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/OdriveMotorConfig.cpp.i
 .PHONY : src/OdriveMotorConfig.cpp.i
 
 src/OdriveMotorConfig.s: src/OdriveMotorConfig.cpp.s
@@ -1360,8 +1510,8 @@ src/OdriveMotorConfig.s: src/OdriveMotorConfig.cpp.s
 
 # target to generate assembly for a file
 src/OdriveMotorConfig.cpp.s:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/OdriveMotorConfig.cpp.s
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/odrv0_config_test_node.dir/build.make bike_core/CMakeFiles/odrv0_config_test_node.dir/src/OdriveMotorConfig.cpp.s
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/OdriveMotorConfig.cpp.s
 .PHONY : src/OdriveMotorConfig.cpp.s
 
 src/RemoteControlParser.o: src/RemoteControlParser.cpp.o
@@ -1370,8 +1520,8 @@ src/RemoteControlParser.o: src/RemoteControlParser.cpp.o
 
 # target to build an object file
 src/RemoteControlParser.cpp.o:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.o
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/src/RemoteControlParser.cpp.o
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.o
 .PHONY : src/RemoteControlParser.cpp.o
 
 src/RemoteControlParser.i: src/RemoteControlParser.cpp.i
@@ -1380,8 +1530,8 @@ src/RemoteControlParser.i: src/RemoteControlParser.cpp.i
 
 # target to preprocess a source file
 src/RemoteControlParser.cpp.i:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.i
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/src/RemoteControlParser.cpp.i
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.i
 .PHONY : src/RemoteControlParser.cpp.i
 
 src/RemoteControlParser.s: src/RemoteControlParser.cpp.s
@@ -1390,8 +1540,8 @@ src/RemoteControlParser.s: src/RemoteControlParser.cpp.s
 
 # target to generate assembly for a file
 src/RemoteControlParser.cpp.s:
-	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.s
 	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/parser_remote_data_node.dir/build.make bike_core/CMakeFiles/parser_remote_data_node.dir/src/RemoteControlParser.cpp.s
+	cd /home/whale/code/ros/bike_control/bike_control/build && $(MAKE) -f bike_core/CMakeFiles/bike_xuan_core_control_node.dir/build.make bike_core/CMakeFiles/bike_xuan_core_control_node.dir/src/RemoteControlParser.cpp.s
 .PHONY : src/RemoteControlParser.cpp.s
 
 src/SbusSimulate.o: src/SbusSimulate.cpp.o
@@ -1536,62 +1686,72 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install"
-	@echo "... bike_xuan_core_control_node"
-	@echo "... odrv0_config_test_node"
-	@echo "... sbus_simulate_node"
-	@echo "... bike_pid_test_node"
-	@echo "... bike_core_genpy"
-	@echo "... bike_core_gennodejs"
-	@echo "... bike_core_generate_messages_nodejs"
-	@echo "... bike_core_genlisp"
-	@echo "... bike_core_generate_messages_lisp"
-	@echo "... edit_cache"
-	@echo "... tf_generate_messages_lisp"
-	@echo "... tf2_msgs_generate_messages_lisp"
-	@echo "... actionlib_msgs_generate_messages_eus"
-	@echo "... tf_generate_messages_py"
-	@echo "... tf_generate_messages_cpp"
-	@echo "... bike_core_geneus"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... actionlib_msgs_generate_messages_nodejs"
-	@echo "... bike_core_generate_messages_py"
-	@echo "... actionlib_msgs_generate_messages_lisp"
-	@echo "... bike_core_generate_messages"
-	@echo "... tf2_msgs_generate_messages_nodejs"
-	@echo "... actionlib_msgs_generate_messages_py"
-	@echo "... actionlib_generate_messages_cpp"
-	@echo "... bike_core_generate_messages_eus"
-	@echo "... tf2_msgs_generate_messages_py"
+	@echo "... actionlib_generate_messages_nodejs"
+	@echo "... can_send_receive_node"
+	@echo "... actionlib_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... tf_generate_messages_nodejs"
 	@echo "... tf_generate_messages_eus"
 	@echo "... tf2_msgs_generate_messages_cpp"
-	@echo "... tf_generate_messages_nodejs"
-	@echo "... test"
-	@echo "... _bike_core_generate_messages_check_deps_remote_control_msg"
-	@echo "... actionlib_msgs_generate_messages_cpp"
-	@echo "... actionlib_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_py"
+	@echo "... actionlib_generate_messages_cpp"
+	@echo "... tf_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... actionlib_generate_messages_py"
+	@echo "... bike_core_geneus"
 	@echo "... actionlib_generate_messages_lisp"
-	@echo "... can_send_receive_node"
-	@echo "... actionlib_generate_messages_nodejs"
-	@echo "... bike_core_generate_messages_cpp"
-	@echo "... rebuild_cache"
-	@echo "... tf2_msgs_generate_messages_eus"
-	@echo "... _bike_core_generate_messages_check_deps_odrive_can_msg"
 	@echo "... _bike_core_generate_messages_check_deps_odrive_motor_feedback_msg"
-	@echo "... install/local"
-	@echo "... test_can_send_receive_node"
+	@echo "... rebuild_cache"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... tf2_msgs_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... bike_core_generate_messages_eus"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... tf_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... edit_cache"
+	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... tf2_msgs_generate_messages_lisp"
+	@echo "... bike_core_generate_messages_nodejs"
+	@echo "... tf2_msgs_generate_messages_nodejs"
+	@echo "... tf_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... bike_core_generate_messages_py"
+	@echo "... bike_core_generate_messages"
+	@echo "... _bike_core_generate_messages_check_deps_remote_control_msg"
+	@echo "... odrv0_config_test_node"
+	@echo "... test"
+	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... _bike_core_generate_messages_check_deps_pid_params_msg"
-	@echo "... list_install_components"
-	@echo "... parser_remote_data_node"
+	@echo "... test_can_send_receive_node"
+	@echo "... install/local"
 	@echo "... _bike_core_generate_messages_check_deps_sbus_channels_msg"
+	@echo "... parser_remote_data_node"
+	@echo "... list_install_components"
+	@echo "... bike_core_generate_messages_cpp"
 	@echo "... bike_core_gencpp"
-	@echo "... bike_xuan_core_control_node_autogen"
-	@echo "... odrv0_config_test_node_autogen"
-	@echo "... sbus_simulate_node_autogen"
-	@echo "... bike_pid_test_node_autogen"
+	@echo "... bike_core_genlisp"
+	@echo "... _bike_core_generate_messages_check_deps_odrive_can_msg"
+	@echo "... bike_core_generate_messages_lisp"
+	@echo "... bike_core_gennodejs"
+	@echo "... bike_core_genpy"
+	@echo "... tf2_msgs_generate_messages_py"
+	@echo "... bike_pid_test_node"
+	@echo "... sbus_simulate_node"
+	@echo "... bike_xuan_core_control_node"
+	@echo "... install"
 	@echo "... can_send_receive_node_autogen"
+	@echo "... odrv0_config_test_node_autogen"
 	@echo "... test_can_send_receive_node_autogen"
 	@echo "... parser_remote_data_node_autogen"
+	@echo "... bike_pid_test_node_autogen"
+	@echo "... sbus_simulate_node_autogen"
+	@echo "... bike_xuan_core_control_node_autogen"
 	@echo "... bike_pid_test_node_autogen/mocs_compilation.o"
 	@echo "... bike_pid_test_node_autogen/mocs_compilation.i"
 	@echo "... bike_pid_test_node_autogen/mocs_compilation.s"
