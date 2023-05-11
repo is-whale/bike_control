@@ -55,6 +55,32 @@
     rosrun bike_core bike_xuan_core_control_node
 
 
+- 扭矩环配置
 
+  https://blog.csdn.net/gjy_skyblue/article/details/115134590
+
+- `odrive` 命令大全
+
+  https://blog.csdn.net/abf1234444/article/details/104911692
+
+- `odrive` 中 `pid`参数调试解释
+
+  https://blog.csdn.net/abf1234444/article/details/103365191
+
+- 小米轮毂电机速度环配置
+
+  https://blog.csdn.net/abf1234444/article/details/111473004
+
+- `odrive` 测试 `can` 模块
+
+  https://blog.csdn.net/gjy_skyblue/article/details/115031160
+
+
+
+相关报错解释
+
+- `MotorError.CONTROL_DEADLINE_MISSED`
+
+  https://discourse.odriverobotics.com/t/error-control-deadline-missed/3662/5
 
 
