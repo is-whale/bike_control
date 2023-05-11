@@ -1,4 +1,5 @@
-1.
+1.启动ros_core
+
 source ./devel/setup.zsh
 roscore
 
