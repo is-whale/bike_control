@@ -71,7 +71,9 @@ BikeXuanControl::BikeXuanControl() : nh_("~") {
       std::thread(&BikeXuanControl::tServoControl, this);
   t_servo_control.detach();
 }
-
+/**
+ * @brief 寻找最近的障碍物
+  */
 int BikeXuanControl::FindNearestObstacleIndex(const bike_vision::road_obstacle_msg &msg) const
 {
   float temp_value = msg.distance[0];
@@ -84,7 +86,9 @@ int BikeXuanControl::FindNearestObstacleIndex(const bike_vision::road_obstacle_m
   }
   return temp_index;
 }
-
+/**
+ * @brief 舵机控制（转向逻辑）
+  */
 void BikeXuanControl::tServoControl() {
   auto output_limit = [](float value, float min, float max) -> float {
     if (value > max)
