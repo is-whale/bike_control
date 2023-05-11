@@ -7,10 +7,17 @@
 #include <functional>
 #include <memory>
 #include <opencv2/opencv.hpp>
-
+//与文件内容相对应的类型，使用yaml文件的内容初始化下面的参数
 class OdriveMotorConfig {
  public:
+ /**
+  * @brief  读取传入地址的文件并且使用其中的数据进行初始化
+ */
   OdriveMotorConfig(const std::string file_path) {
+    /**
+     * @name  cv::FileStorage odrv_config_file(file_path, cv::FileStorage::READ);
+     * @brief opencv库中的文件读取函数，用于读取yaml参数文件，将""赋值到共有成员，共有成员的定义在后面
+      */
     cv::FileStorage odrv_config_file(file_path, cv::FileStorage::READ);
     LOG_IF(FATAL, !odrv_config_file.isOpened())
         << file_path << "\t Is Open Error";
@@ -55,12 +62,13 @@ class OdriveMotorConfig {
       [](int cmd_id, int axis_id) -> int { return axis_id << 5 | cmd_id; };
 
  public:
+ //返回初始化之后的类，首先调用构造函数使用文件进行初始化。单例模式
   static OdriveMotorConfig& getSigleInstance() {
     static OdriveMotorConfig odrv0_config(
         "./src/bike_core/params/odrive_motor_config.yaml");
     return odrv0_config;
   }
-
+//以下参数存放yaml读取的参数
  public:
   int axis0_motor_config_can_id_, axis1_motor_config_can_id_;
   int axis0_send_receive_vel_position_can_id_,
@@ -79,7 +87,9 @@ class OdriveMotorConfig {
   double tolerance_nearest_obstacle_dis_{0.0};
   double faucet_dir_control_rate_{0.0};
   double faucet_dir_error_p_{0.0};
-
+/**
+ * @brief   申明串口
+ */
   std::string servo_port_name_{""}, dbus_serial_port_name_{""},
       sbus_serial_port_name_{""}, imu_serial_port_name_{""};
   int servo_port_baud_rate_;

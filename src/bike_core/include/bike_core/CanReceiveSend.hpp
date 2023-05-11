@@ -22,7 +22,9 @@
 #include "bike_core/odrive_can_msg.h"
 #include "bike_core/odrive_motor_feedback_msg.h"
 #include "bike_core/OdriveMotorConfig.hpp"
-
+/**
+ * @brief CAN通信的函数与数据
+  */
 class CanSendReceive {
  public:
   CanSendReceive();

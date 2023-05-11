@@ -1,8 +1,12 @@
 #include "bike_core/BikeXuanControl.hpp"
-
+//实例化类
 BikeXuanControl::BikeXuanControl() : nh_("~") {
   bike_roll_balance_angle_ =
       OdriveMotorConfig::getSigleInstance().imu_machine_middle_angle_;
+      //上一个类是个非常妙的设计，单例模式
+  /**
+   * @brief 日志输出，类似cout 等级：INFO
+    */
   LOG(INFO) << "Bike.Machine.IMU.Middle.Angle: " << bike_roll_balance_angle_;
   const std::string can_port_name = "can0";
   socket_can_fd_ =
