@@ -80,7 +80,7 @@ class OdriveMotorConfig {
   bool debug_run_momentum_wheel_{true}, debug_run_back_drive_wheel_{true};
   bool debug_faucet_dir_{false};
   bool output_imu_middle_angle_{false};
-  int servo_pwm_middle_angle_{1700};
+  int servo_pwm_middle_angle_{1700};//舵机数据中值
   double imu_machine_middle_angle_{0.0};
   double bike_turn_scale_{0.0};
   double avoid_obstacle_drive_speed_{0.0};

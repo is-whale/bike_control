@@ -233,14 +233,14 @@ void BikeXuanControl::timerDriverWheelControll(const ros::TimerEvent &event) {
   if ((rc_ctrl_msg_ptr_->s2 == 3 && rc_ctrl_msg_ptr_->s1 != 3) ||
       (rc_ctrl_msg_ptr_->s2 == 3 && rc_ctrl_msg_ptr_->s1 == 3)) {
     float drive_wheel_current = odrive_axis1_can_parsed_msg_ptr_->speed;
-
+    //貌似是智能字符串指针，计算PID
     float drive_speed_pid_out = (*bike_pid_ptr_)(
         avoid_obstacle_drive_speed_, drive_wheel_current, PidParams::POSITION,
         bike_pid_ptr_->getDriveWheelSpeedPid(),
         bike_pid_ptr_->getDriveWheelSpeedPid()->debug_);
-
+    //截取为int类型的待发送电机数据
     int16_t int_speed = static_cast<int16_t>(drive_speed_pid_out);
-
+    //发送给电机
     CanSendReceive::WriteDataToSocketCanDeviceControlMotor(
         socket_can_fd_,
         OdriveMotorConfig::getSigleInstance().axis1_set_input_pos_can_id_,
@@ -254,11 +254,12 @@ void BikeXuanControl::timerDriverWheelControll(const ros::TimerEvent &event) {
         -rc_ctrl_msg_ptr_->ch_x[0] +
         OdriveMotorConfig::getSigleInstance().servo_pwm_middle_angle_;
     bike_core::sbus_channels_msg sbus_output_data;
+    //ch0通道的值赋值给舵机通道值
     sbus_output_data.channels_value[0] =
         static_cast<uint16_t>(faucet_direction_);
-    pub_sbus_channels_value_.publish(sbus_output_data);
+    pub_sbus_channels_value_.publish(sbus_output_data);//舵机的值发送给电机
 
-    float drive_wheel_target = rc_ctrl_msg_ptr_->ch_x[3] / 100.0;
+    float drive_wheel_target = rc_ctrl_msg_ptr_->ch_x[3] / 100.0;//驱动轮的目标值是ch3
     float drive_wheel_current = odrive_axis1_can_parsed_msg_ptr_->speed;
     // control back wheel
     float drive_speed_pid_out = (*bike_pid_ptr_)(
@@ -267,6 +268,7 @@ void BikeXuanControl::timerDriverWheelControll(const ros::TimerEvent &event) {
         bike_pid_ptr_->getDriveWheelSpeedPid()->debug_);
 
     int16_t int_speed = static_cast<int16_t>(drive_speed_pid_out);
+    //debug_run_back_drive_wheel_{true}，所以是发送数据
     if (OdriveMotorConfig::getSigleInstance().debug_run_back_drive_wheel_) {
       CanSendReceive::WriteDataToSocketCanDeviceControlMotor(
           socket_can_fd_,
@@ -275,11 +277,12 @@ void BikeXuanControl::timerDriverWheelControll(const ros::TimerEvent &event) {
     } else {
       CanSendReceive::WriteDataToSocketCanDeviceControlMotor(
           socket_can_fd_,
-          OdriveMotorConfig::getSigleInstance().axis1_set_input_pos_can_id_, 0);
+          OdriveMotorConfig::getSigleInstance().axis1_set_input_pos_can_id_, 0);//输出电机数据为0
     }
   }
 
   else {
+    //电机无输出
     CanSendReceive::WriteDataToSocketCanDeviceControlMotor(
         socket_can_fd_,
         OdriveMotorConfig::getSigleInstance().axis1_set_input_pos_can_id_, 0);
@@ -379,28 +382,31 @@ void BikeXuanControl::timerBalance(const ros::TimerEvent &event) {
       t_ms_ = 0;
   }
 }
-
+/**
+ * @brief 平衡的核心逻辑
+  */
 void BikeXuanControl::tBikeCoreControl() {
+  //初始化部分
   const std::string can_port_name = "can0";
   const int socket_can_fd =
       CanSendReceive::GetOneSocketCanSendInstance(can_port_name.c_str());
     /* 输出标志 */
   LOG_IF(FATAL, !socket_can_fd) << "Get Socket Can Instance Erros!";
 
-  // TODO using yaml to save params
-  const double control_rate = 1000;
+  // TODO：using yaml to save params
+  const double control_rate = 1000;// 控制频率
   const double tolerance_msg_dt = 0.1;
   geometry_msgs::Vector3 &gyro_msg = bike_xuan_imu_msg_ptr_->angular_velocity;
   ros::Rate rate(control_rate);
 
   BikePid bike_pid;
-
+//congfig_init_success_返回的是false，取反得到逻辑的正确结果，即成功得到数据
   while (!OdriveMotorConfig::getSigleInstance().config_init_success_)
     ;
 
   unsigned int count = 0;
   while (ros::ok()) {
-    count++;
+    count++;//计时器不断增加，直到被重置
     if (count > 60000) count = 0;
     // TODO set the target motor speed 0.0
     LOG_IF(FATAL, !ChechSubscriberMessageTimestamp())
@@ -408,11 +414,12 @@ void BikeXuanControl::tBikeCoreControl() {
         []() -> std::string { return std::string("Set Motor Speed To [0.0]"); };
 
     int pwm_middle_value =
-        OdriveMotorConfig::getSigleInstance().servo_pwm_middle_angle_;
-    double turn_scale = OdriveMotorConfig::getSigleInstance().bike_turn_scale_;
+        OdriveMotorConfig::getSigleInstance().servo_pwm_middle_angle_;//获取参数文件的机械中值
+    double turn_scale = OdriveMotorConfig::getSigleInstance().bike_turn_scale_;//转向倍率
     //////////////////////////////////////////////////////////////////
     float balance_roll_anle =
         OdriveMotorConfig::getSigleInstance().imu_machine_middle_angle_;
+        //这里将理论机械中值和车把方向结合的地方，也是需要重点调整的地方
     balance_roll_anle += (faucet_direction_ - pwm_middle_value) * turn_scale;
 
     // dynamic config middle machine angle

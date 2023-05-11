@@ -40,7 +40,14 @@ float PidLimit(float value, float min, float max) {
   if (value > max) return max;
   return value;
 }
-
+/**
+ * @brief 计算速度PID输出值
+ * @param [target] 目标值
+ * @param [current] 上次的值，此处即为上次输出的电流值 
+ * @param [pid] 文件读取到的pid参数
+ * @param [debug] 日志系统的输出等级，用于pid计算函数内部的日志系统输出
+ * 
+  */
 const float BikePid::CalculatePositionSpeedPid(float target, float current,
                                                std::shared_ptr<PidParams> pid,
                                                bool debug) const {

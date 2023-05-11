@@ -44,11 +44,14 @@ struct PidParams {
   int calculate_time_{10};
   bool debug_{false};
 };
-
+/** 
+ * @brief 读取文件获得PID参数并且初始化PID类成员，并且提供外部访问的接口函数getXXPID（）
+  */
 class BikePid {
  public:
   explicit BikePid();
   ~BikePid() = default;
+  //()重载为后面的PID计算函数
   float operator()(const float target, const float current,
                    const PidParams::PidType PID_TYPE,
                    std::shared_ptr<PidParams> pid, bool debug) const;
@@ -61,6 +64,7 @@ class BikePid {
   std::shared_ptr<PidParams> getDriveWheelSpeedPid() const { return drive_wheel_speed_pid_ptr_; };
 
  public:
+ //经典的单例模式设计
   static BikePid& getInstance() {
     static BikePid instance;
     return instance;
