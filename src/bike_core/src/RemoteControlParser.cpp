@@ -13,7 +13,9 @@ RemoteControlDataParser::RemoteControlDataParser() {
       std::thread(&RemoteControlDataParser::NodeSpinThread, this);
   remote_ctl_thread.detach();
 }
-
+/**
+ * @brief 读取解析数据，并且发布到遥控器数据话题
+  */
 void RemoteControlDataParser::ReadRemoteControlSerialDataCallback() {
   qint64 rece_len = remote_control_serial_->bytesAvailable();
   QByteArray received_buffer = remote_control_serial_->readAll();
@@ -27,7 +29,9 @@ void RemoteControlDataParser::ReadRemoteControlSerialDataCallback() {
     LOG(ERROR) << "Remote Data Is Empty";
   }
 }
-
+/**
+ * @brief 串口参数初始化
+  */
 bool RemoteControlDataParser::InitRemoteCtrlSerialport(
     const std::string &port_name) const {
   // remember to set the serial parameters, then open the device
@@ -52,7 +56,9 @@ bool RemoteControlDataParser::InitRemoteCtrlSerialport(
     return false;
   }
 }
-
+/**
+ * @brief 数据解析函数
+  */
 void RemoteControlDataParser::Parser(
     const QByteArray &sbus_buf, bike_core::remote_control_msg &rc_ctrl) const {
   auto sbus_buf_temp = reinterpret_cast<unsigned char *>(const_cast<char *>(sbus_buf.data()));

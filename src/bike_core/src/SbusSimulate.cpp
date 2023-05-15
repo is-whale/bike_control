@@ -1,14 +1,18 @@
 #include "bike_core/SbusSimulate.hpp"
 
 SbusSimulateSerial::SbusSimulateSerial() : nh_("~") {
-  sbus_simulate_ser_ = std::make_shared<QSerialPort>();
+  sbus_simulate_ser_ = std::make_shared<QSerialPort>();//SbusSimlate.h定义，应该是串口配置结构体
   InitSbusSimulateSerialPort(
-      OdriveMotorConfig::getSigleInstance().servo_port_name_);
+      OdriveMotorConfig::getSigleInstance().servo_port_name_);//使用文件读取到的串口号进行初始化
   sub_sbus_channels_value_ = nh_.subscribe<bike_core::sbus_channels_msg>(
       "/bike_core_control_node/sbus_channel_values", 100, &SbusSimulateSerial::SubSbusNewChannelsValueCallback, this);
-  SbusOutputThread();
+      //读取传输的SBUS通道值
+  SbusOutputThread();//输出SBUS模拟的PWM给舵机
 }
-
+/**
+ * @brief init Serial setting
+ * @retval [true] success and LOG OUT
+  */
 bool SbusSimulateSerial::InitSbusSimulateSerialPort(
     const std::string port_name) const {
   sbus_simulate_ser_->setPortName(QString::fromStdString(port_name));
@@ -34,7 +38,9 @@ void SbusSimulateSerial::SbusOutputThread() {
     ros::spinOnce();
   }
 }
-
+/**
+ * @brief 打印SBUS数据
+  */
 void SbusSimulateSerial::setOutputValues(
     const std::array<uint16_t, 16> &value) {
   for (size_t i{0}; i < values_.size(); i++) {
@@ -47,7 +53,9 @@ void SbusSimulateSerial::setOutputValues(
                    [](const int16_t &n) { std::cout << " " << n << " "; });
   std::cout << std::endl;
 }
-
+/**
+ * @brief 输出SBUS数据到电机
+  */
 const qint16 SbusSimulateSerial::SbusSimulateOutput(
     const uint16_t channels_num) const {
   int i = 0;

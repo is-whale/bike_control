@@ -30,7 +30,7 @@ class SbusSimulateSerial : public QObject {
   Q_OBJECT
  public:
   SbusSimulateSerial();
-  ~SbusSimulateSerial() = default;
+  ~SbusSimulateSerial() = default;//使用默认析构函数
   bool InitSbusSimulateSerialPort(const std::string port_name) const;
   const qint16 SbusSimulateOutput(const uint16_t channels_num) const;
   void setOutputValues(const std::array<uint16_t, 16>& values);
@@ -47,7 +47,7 @@ class SbusSimulateSerial : public QObject {
  private:
   ros::NodeHandle nh_;
   std::array<uint16_t, 16> values_{1700};
-  ros::Subscriber sub_sbus_channels_value_;
+  ros::Subscriber sub_sbus_channels_value_;//存放接收的通道消息
   std::shared_ptr<QSerialPort> sbus_simulate_ser_;
 };
 
